@@ -14,8 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.todoapp.R;
+import com.example.todoapp.base.BaseActivity;
 
-public class TasksActivity extends AppCompatActivity
+public class TasksActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -42,6 +43,7 @@ public class TasksActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new TasksFragment()).commit();
     }
 
     @Override
