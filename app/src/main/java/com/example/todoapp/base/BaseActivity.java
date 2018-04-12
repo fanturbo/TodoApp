@@ -18,6 +18,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void injectDependencies() {
-        AndroidInjection.inject(this);
+
     }
 }

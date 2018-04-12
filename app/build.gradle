@@ -10,6 +10,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //设置支持的cpu
+            abiFilters 'armeabi-v7a'
+        }
     }
     buildTypes {
         debug {
@@ -29,33 +33,7 @@ android {
     }
 
     //todo 以下内容还木有搞明白
-    flavorDimensions "default"
 
-    // If you need to add more flavors, consider using flavor dimensions.
-    productFlavors {
-        mock {
-            dimension "default"
-            applicationIdSuffix = ".mock"
-        }
-        prod {
-            dimension "default"
-        }
-    }
-
-    // Remove mockRelease as it's not needed.
-    android.variantFilter { variant ->
-        if (variant.buildType.name == 'release'
-                && variant.getFlavors().get(0).name == 'mock') {
-            variant.setIgnore(true)
-        }
-    }
-
-    // Always show the result of every unit test, even if it passes.
-    testOptions.unitTests.all {
-        testLogging {
-            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
-        }
-    }
 }
 
 dependencies {
@@ -111,5 +89,6 @@ dependencies {
     androidTestCompile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
     androidTestCompile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     androidTestCompile "com.android.support:design:$rootProject.supportLibraryVersion"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     androidTestCompile "com.google.code.findbugs:jsr305:3.0.1"
 }
