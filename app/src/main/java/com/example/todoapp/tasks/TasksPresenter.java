@@ -20,7 +20,7 @@ public class TasksPresenter implements TasksContract.Presenter {
 
     @Override
     public void loadTasks(boolean forceUpdate) {
-        Log.i("======", "loadTasks");
+        Log.i("======", this+"loadTasks");
     }
 
     @Override

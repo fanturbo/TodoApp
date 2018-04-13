@@ -12,6 +12,8 @@ import com.example.todoapp.base.BaseFragment;
 
 import javax.inject.Inject;
 
+import dagger.android.support.AndroidSupportInjection;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -32,5 +34,4 @@ public class TasksFragment extends BaseFragment {
         tasksPresenter.loadTasks(false);
         return inflater.inflate(R.layout.fragment_tasks, container, false);
     }
-
 }

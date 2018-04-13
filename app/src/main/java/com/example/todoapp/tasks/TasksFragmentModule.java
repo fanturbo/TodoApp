@@ -2,9 +2,16 @@ package com.example.todoapp.tasks;
 
 import android.support.v4.app.Fragment;
 
+import com.example.todoapp.di.ActivityScoped;
+import com.example.todoapp.di.FragmentScoped;
+
+import javax.inject.Singleton;
+
 import dagger.Binds;
+import dagger.BindsInstance;
 import dagger.Module;
 import dagger.android.AndroidInjector;
+import dagger.android.ContributesAndroidInjector;
 import dagger.android.support.FragmentKey;
 import dagger.multibindings.IntoMap;
 
@@ -12,10 +19,15 @@ import dagger.multibindings.IntoMap;
  * Created by tubro on 2018/4/11.
  */
 
-@Module(subcomponents = TasksFragmentSubcomponent.class)
+@Module
 public abstract class TasksFragmentModule {
+
+    @FragmentScoped
+    @ContributesAndroidInjector
+    abstract TasksFragment tasksFragment();
+
+    @FragmentScoped
+    @ActivityScoped
     @Binds
-    @IntoMap
-    @FragmentKey(TasksFragment.class)
-    abstract AndroidInjector.Factory<? extends Fragment> bindTasksFragmentInjectorFactory(TasksFragmentSubcomponent.Builder builder);
+    abstract TasksContract.Presenter taskPresenter(TasksPresenter presenter);
 }

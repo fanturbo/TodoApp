@@ -3,6 +3,7 @@ package com.example.todoapp.tasks;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,8 +17,16 @@ import android.view.MenuItem;
 import com.example.todoapp.R;
 import com.example.todoapp.base.BaseActivity;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
+
 public class TasksActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    TasksPresenter tasksPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +53,7 @@ public class TasksActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new TasksFragment()).commit();
+        tasksPresenter.loadTasks(false);
     }
 
     @Override

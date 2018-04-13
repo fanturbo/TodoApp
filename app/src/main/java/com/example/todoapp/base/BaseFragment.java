@@ -3,7 +3,10 @@ package com.example.todoapp.base;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
-import dagger.android.AndroidInjection;
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.AndroidSupportInjection;
 
 /**
@@ -14,8 +17,11 @@ public class BaseFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
-        AndroidSupportInjection.inject(this); // v4 Fragment
-//        AndroidInjection.inject(this); // Fragment
+        injectDependencies();
         super.onAttach(context);
+    }
+
+    protected void injectDependencies() {
+        AndroidSupportInjection.inject(this); // v4 Fragment
     }
 }
