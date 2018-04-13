@@ -22,11 +22,9 @@ import dagger.multibindings.IntoMap;
 @Module
 public abstract class TasksFragmentModule {
 
-    @FragmentScoped
     @ContributesAndroidInjector
     abstract TasksFragment tasksFragment();
 
-    @FragmentScoped
     @ActivityScoped
     @Binds
     abstract TasksContract.Presenter taskPresenter(TasksPresenter presenter);

@@ -9,6 +9,7 @@ import dagger.android.ContributesAndroidInjector;
 /**
  * Created by tubro on 2018/4/13.
  */
+@ActivityScoped
 @Module
 public abstract class AllActivityModule {
     @ActivityScoped

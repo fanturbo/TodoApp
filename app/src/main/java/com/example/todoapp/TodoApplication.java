@@ -26,7 +26,7 @@ public class TodoApplication extends Application implements HasActivityInjector,
     @Override
     public void onCreate() {
         super.onCreate();
-        DaggerTodoApplicationComponent.create().inject(this);
+        DaggerTodoApplicationComponent.builder().application(this).build().inject(this);
     }
 
     @Override
