@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.example.todoapp.R;
 import com.example.todoapp.base.BaseFragment;
+import com.example.todoapp.di.FragmentScoped;
 
 import javax.inject.Inject;
 
@@ -17,6 +18,7 @@ import dagger.android.support.AndroidSupportInjection;
 /**
  * A simple {@link Fragment} subclass.
  */
+@FragmentScoped
 public class TasksFragment extends BaseFragment {
 
     @Inject
@@ -32,6 +34,13 @@ public class TasksFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         tasksPresenter.loadTasks(false);
-        return inflater.inflate(R.layout.fragment_tasks, container, false);
+        View view = inflater.inflate(R.layout.fragment_tasks, container, false);
+        view.findViewById(R.id.textView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tasksPresenter.loadTasks(false);
+            }
+        });
+        return view;
     }
 }

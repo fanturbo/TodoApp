@@ -12,7 +12,7 @@ import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
-@FragmentScoped
+@Singleton
 @Component(modules = {
         AllActivityModule.class,
         TodoApplicationModule.class,

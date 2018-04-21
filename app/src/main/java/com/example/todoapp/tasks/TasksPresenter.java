@@ -3,6 +3,8 @@ package com.example.todoapp.tasks;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.todoapp.di.ActivityScoped;
+import com.example.todoapp.di.FragmentScoped;
 import com.example.todoapp.model.Task;
 
 import javax.inject.Inject;

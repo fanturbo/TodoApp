@@ -10,10 +10,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        ndk {
-            //设置支持的cpu
-            abiFilters 'armeabi-v7a'
-        }
     }
     buildTypes {
         debug {
